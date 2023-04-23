@@ -15,6 +15,7 @@ export default function Home() {
       .then((data) => setFolder(data));
   }, []);
   console.log(folder);
+  //@ts-ignore 
   const parentFolders = folder.filter((folder) => folder.parent == null);
   //const sameparents = folder.join
 
@@ -23,7 +24,9 @@ export default function Home() {
       {
         <div className="folder-list">
           {parentFolders.map((folder, index) => (
-            <FoldersPage key={folder.id} name={folder.name} id={folder.id} />
+            <FoldersPage 
+            //@ts-ignore 
+            key={folder.id} name={folder.name} id={folder.id} />
           ))}
         </div>
       }

@@ -6,15 +6,7 @@ import FolderOpenOutlinedIcon from "@mui/icons-material/FolderOpenOutlined";
 import ArticleIcon from "@mui/icons-material/Article";
 import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
 import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
-type Props={
-    params: {
-        foldername: string,
-        id: string,
-        foldertype: string,
-        ext: string
-    }
-  }
-export default function SubFoldersPage({params: {foldername,id,foldertype,ext}} : Props) {
+export default function SubFoldersPage( {foldername,id,foldertype,ext}) {
   const navigate = useRouter();
 //To render the contents of the subfolder 
   return (
@@ -30,7 +22,7 @@ export default function SubFoldersPage({params: {foldername,id,foldertype,ext}} 
   );
 }
 //To display the file name with extension and folder name without any extensions
-function getName(ext:any, name:any) {
+function getName(ext, name) {
   if (ext == null) return name;
   else return `${name}.${ext}`;
 }

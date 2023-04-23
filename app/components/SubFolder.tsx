@@ -3,15 +3,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import SubFoldersPage from "./SubFoldersPage";
 //Fetching the Subfolders of the selected Parent folder by passing the id as props
-type Props={
-    params: {
-        id: string
-    }
-  }
-  type name= {
-    name: string,
-}
-export default function SubFolder({params: {id}} : Props) {
+
+export default function SubFolder({id}) {
   const url = "/api/handle/";
   const [folder, setFolder] = useState([]);
   useEffect(() => {
@@ -44,7 +37,7 @@ export default function SubFolder({params: {id}} : Props) {
           <SubFoldersPage
             key={folder.id}
             //@ts-ignore 
-            name={folder.name}
+            foldername={folder.name}
             id={folder.id}
             foldertype={folder.type}
             ext={folder.ext}
