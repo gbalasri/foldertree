@@ -3,7 +3,15 @@ import React from "react";
 import { useEffect, useState } from "react";
 import SubFoldersPage from "./SubFoldersPage";
 //Fetching the Subfolders of the selected Parent folder by passing the id as props
-export default function SubFolder({ id }) {
+type Props={
+    params: {
+        id: string
+    }
+  }
+  type name= {
+    name: string,
+}
+export default function SubFolder({params: {id}} : Props) {
   const url = "/api/handle/";
   const [folder, setFolder] = useState([]);
   useEffect(() => {
@@ -12,9 +20,9 @@ export default function SubFolder({ id }) {
       .then((data) => setFolder(data));
   }, []);
   //Filtering only the subfolders for the selected folder id
-  const subFolders = folder.filter((folder) => folder.parent == id);
+  const subFolders = folder.filter((folder:any) => folder.parent == id);
   //Sorting to bring all the folders listed first.
-  subFolders.sort((a, b) => {
+  subFolders.sort((a:any, b:any) => {
     let fa = a.type.toLowerCase(),
       fb = b.type.toLowerCase();
     if (fa < fb) {
@@ -25,15 +33,17 @@ export default function SubFolder({ id }) {
     }
     return 0;
   });
-  let content = "";
+  let content :any;
   //Displaying content only when there is a subfolder available for the selected folder.
+
   if (subFolders.length > 0) {
     content = (
       <div className="text-white bg-slate-700 left-2">
         <br />
-        {subFolders.map((folder, index) => (
+        {subFolders.map((folder:any, index) => (
           <SubFoldersPage
             key={folder.id}
+            //@ts-ignore 
             name={folder.name}
             id={folder.id}
             foldertype={folder.type}

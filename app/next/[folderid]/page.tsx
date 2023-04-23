@@ -1,14 +1,21 @@
 'use client';
 import React from 'react'
-import { useParams } from 'next/navigation'
 import SubFolder from '@/app/components/SubFolder';
-
-export default function page() {
-    const {folderid}=useParams();
+type Props={
+    params: {
+        folderid: string
+    }
+}
+export default function page({params: {folderid}} : Props) {
+    //const router=useRouter();
+    //const folderid=router.query.folderid;
     console.log("FolderID",folderid);
   return (
     <div>
-        <SubFolder id={folderid}/>
+       
+        <SubFolder 
+        //@ts-ignore 
+        id={folderid}/>
     </div>
   )
 }

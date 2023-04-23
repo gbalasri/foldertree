@@ -6,8 +6,15 @@ import FolderOpenOutlinedIcon from "@mui/icons-material/FolderOpenOutlined";
 import ArticleIcon from "@mui/icons-material/Article";
 import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
 import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
-
-export default function SubFoldersPage({ name, id, foldertype, ext }) {
+type Props={
+    params: {
+        foldername: string,
+        id: string,
+        foldertype: string,
+        ext: string
+    }
+  }
+export default function SubFoldersPage({params: {foldername,id,foldertype,ext}} : Props) {
   const navigate = useRouter();
 //To render the contents of the subfolder 
   return (
@@ -15,7 +22,7 @@ export default function SubFoldersPage({ name, id, foldertype, ext }) {
       <Link href={`/next/${id}`}>
         <div className="p-4 flex space-x-2 justify-center">
           <div>{getICons(ext)} </div>
-          <div>{getName(ext, name)}</div>
+          <div>{getName(ext, foldername)}</div>
         </div>
       </Link>
       <br />
@@ -23,12 +30,12 @@ export default function SubFoldersPage({ name, id, foldertype, ext }) {
   );
 }
 //To display the file name with extension and folder name without any extensions
-function getName(ext, name) {
+function getName(ext:any, name:any) {
   if (ext == null) return name;
   else return `${name}.${ext}`;
 }
 //To display the different icons from material ui for different file types 
-function getICons(ext) {
+function getICons(ext:any) {
   console.log(ext);
   if (ext == "html") return <IntegrationInstructionsIcon />;
   else if (ext == "doc") return <DocumentScannerIcon />;
