@@ -12,7 +12,7 @@ export default function SubFoldersPage( {foldername,id,foldertype,ext}) {
   return (
     <div className="text-white flex place-content-between">
       <Link href={`/next/${id}`}>
-        <div className="p-4 flex space-x-2 justify-center">
+        <div className="p-6 flex space-x-2 justify-center">
           <div>{getICons(ext)} </div>
           <div>{getName(ext, foldername)}</div>
         </div>

@@ -49,10 +49,10 @@ export default function SubFolder({id}) {
     content = (
       <div className="text-white bg-slate-700 left-2">
         <br />{" "}
-        <h3>
+        <h6>
           {" "}
-          you have either selected the file or the Folder has no contents.
-        </h3>
+          you have either selected the file or the Folder that has no contents.
+        </h6>
       </div>
     );
   }
